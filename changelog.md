@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0a3] - 2018-11-02
+### Changed
+- Fixed ambiguous call to `Is_Gzipped`
+- Fixed unreturned header value from `Get_Header`
+
+### Added
+- Set sys environment variables to prevent numpy from using all available threads
+
 ## [0.0a2] - 2018-10-11
 ### Added
 - Changelog.md
