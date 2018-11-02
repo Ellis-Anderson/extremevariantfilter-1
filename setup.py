@@ -5,7 +5,7 @@ def readme():
 		return f.read()
 
 setup(name='extremevariantfilter',
-      version='0.0a2',
+      version='0.0a3',
       description='A set of tools to aid in the identification of false positive variants in Variant Call Files.',
       long_description=readme(),
       long_description_content_type="text/markdown",
@@ -15,7 +15,7 @@ setup(name='extremevariantfilter',
          'Intended Audience :: Science/Research',
          'Topic :: Scientific/Engineering :: Bio-Informatics'
       ],
-      url='https://github.com/Ellis-Anderson/extremevariantfilter',
+      url='https://github.com/stLFR/extremevariantfilter',
       author='Complete Genomics',
       author_email='eanderson@genomics.cn',
       packages=['extremevariantfilter'],
