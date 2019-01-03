@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.0a4] - 2019-01-03
+### Changed
+- Modified apply_filter to accept and output file
+
 ## [0.0a3] - 2018-11-02
 ### Changed
 - Fixed ambiguous call to `Is_Gzipped`
