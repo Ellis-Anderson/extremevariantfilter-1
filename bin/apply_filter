@@ -10,6 +10,7 @@ Arguments:
     --vcf STR                     VCF to be filtered
     --snp-model STR               Model for applying to SNPs
     --indel-model INT             Model for applying to InDels
+    --outfile STR                 Output VCF file
 
 Options:
     -h, --help                      Show this help message and exit.
@@ -44,6 +45,8 @@ def get_options():
         path to XGBClassifier trained on SNP data
     ind_mod : str
         path to XGBClassifier trained on INDEL data
+    out_vcf : str
+	path to ouput vcf file
     """
 
     args = docopt(__doc__, version='1.0')
@@ -54,8 +57,9 @@ def get_options():
     evf.Check_VCF(vcf)
     snp_mod = args['--snp-model']
     ind_mod = args['--indel-model']
+    out_vcf = args['--outfile']
 
-    return vcf, snp_mod, ind_mod
+    return vcf, snp_mod, ind_mod, out_vcf
 
 
 def main():
@@ -66,7 +70,7 @@ def main():
     """
     warnings.filterwarnings('ignore',category=DeprecationWarning)
 
-    vcf_path, snp_mod, ind_mod = get_options()
+    vcf_path, snp_mod, ind_mod, out_vcf = get_options()
     header = evf.Get_Header(vcf_path)
     vcf = evf.Open_VCF(vcf_path)
 
@@ -86,7 +90,7 @@ def main():
                                                args=(snp_mdl, ind_mdl))
     vcf['FILTER'] = info_fields.apply(evf.Add_Filter, axis=1)
 
-    evf.Write_VCF(vcf, header, evf.Get_Name(vcf_path))
+    evf.Write_VCF(vcf, header, out_vcf)
 
 
 if __name__ == "__main__":
